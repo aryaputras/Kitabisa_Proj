@@ -1,0 +1,195 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="19162" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="bD5-c8-lmU">
+    <device id="retina6_1" orientation="portrait" appearance="light"/>
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="19144"/>
+        <capability name="Safe area layout guides" minToolsVersion="9.0"/>
+        <capability name="System colors in document resources" minToolsVersion="11.0"/>
+        <capability name="collection view cell content view" minToolsVersion="11.0"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <scenes>
+        <!--Movies-->
+        <scene sceneID="tne-QT-ifu">
+            <objects>
+                <viewController id="BYZ-38-t0r" customClass="ViewController" customModule="Kitabisa_Proj" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="OeA-s6-uhb">
+                                <rect key="frame" x="0.0" y="137" width="414" height="685"/>
+                                <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <collectionViewFlowLayout key="collectionViewLayout" automaticEstimatedItemSize="YES" minimumLineSpacing="10" minimumInteritemSpacing="10" id="kAD-Eq-yDY">
+                                    <size key="itemSize" width="373" height="258"/>
+                                    <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                    <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                    <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                </collectionViewFlowLayout>
+                                <cells>
+                                    <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="cell" id="7bY-YY-zMM" customClass="MovieCollectionViewCell" customModule="Kitabisa_Proj" customModuleProvider="target">
+                                        <rect key="frame" x="20.5" y="0.0" width="373" height="258"/>
+                                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <collectionViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" id="ZJY-5p-2Vl">
+                                            <rect key="frame" x="0.0" y="0.0" width="373" height="258"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                        </collectionViewCellContentView>
+                                        <size key="customSize" width="373" height="258"/>
+                                    </collectionViewCell>
+                                </cells>
+                            </collectionView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="vNe-Ha-fci">
+                                <rect key="frame" x="158" y="842" width="67" height="31"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="clear"/>
+                                <connections>
+                                    <action selector="checkDidTap:" destination="BYZ-38-t0r" eventType="touchUpInside" id="6oT-Dx-7Xb"/>
+                                </connections>
+                            </button>
+                            <segmentedControl opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="top" segmentControlStyle="plain" selectedSegmentIndex="0" translatesAutoresizingMaskIntoConstraints="NO" id="0cg-WF-BKK">
+                                <rect key="frame" x="20" y="97" width="374" height="32"/>
+                                <segments>
+                                    <segment title="Now Playing"/>
+                                    <segment title="Popular"/>
+                                    <segment title="Top Rated"/>
+                                </segments>
+                                <connections>
+                                    <action selector="categorySegmentedControlValueChanged:" destination="BYZ-38-t0r" eventType="valueChanged" id="3AE-r6-Aj5"/>
+                                </connections>
+                            </segmentedControl>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Rcs-ow-iCd">
+                                <rect key="frame" x="41" y="842" width="56" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="iSfav"/>
+                                <connections>
+                                    <action selector="trashIsFavTapped:" destination="BYZ-38-t0r" eventType="touchUpInside" id="70t-rm-xJf"/>
+                                </connections>
+                            </button>
+                            <button opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="system" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="V99-JZ-jfx">
+                                <rect key="frame" x="284" y="831" width="79" height="31"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <state key="normal" title="Button"/>
+                                <buttonConfiguration key="configuration" style="plain" title="add2Fav"/>
+                                <connections>
+                                    <action selector="trashAdd2Fav:" destination="BYZ-38-t0r" eventType="touchUpInside" id="G8x-Un-R0X"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="OeA-s6-uhb" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7a6-mX-2M3"/>
+                            <constraint firstItem="0cg-WF-BKK" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="20" id="9lb-c2-b8r"/>
+                            <constraint firstAttribute="bottom" secondItem="vNe-Ha-fci" secondAttribute="bottom" constant="23" id="BfI-yn-Hlp"/>
+                            <constraint firstItem="OeA-s6-uhb" firstAttribute="top" secondItem="0cg-WF-BKK" secondAttribute="bottom" constant="9" id="DUO-i6-Ra1"/>
+                            <constraint firstItem="vNe-Ha-fci" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="158" id="I6z-fr-Di4"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="0cg-WF-BKK" secondAttribute="trailing" constant="20" id="Twj-0I-sEs"/>
+                            <constraint firstItem="0cg-WF-BKK" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="9" id="eWz-am-SpG"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="vNe-Ha-fci" secondAttribute="trailing" constant="189" id="f9q-gP-xDN"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="OeA-s6-uhb" secondAttribute="trailing" id="kn7-F2-ixh"/>
+                            <constraint firstItem="vNe-Ha-fci" firstAttribute="top" secondItem="OeA-s6-uhb" secondAttribute="bottom" constant="20" id="o0E-75-tm7"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" title="Movies" id="ZCh-TG-2d8">
+                        <barButtonItem key="rightBarButtonItem" title="􀊵" image="heart.fill" catalog="system" id="Lrz-II-oMi"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="categorySegmentedControl" destination="0cg-WF-BKK" id="V4m-C2-h1g"/>
+                        <outlet property="movieListCollectionView" destination="OeA-s6-uhb" id="h3M-Ps-ZnJ"/>
+                        <segue destination="Jta-wZ-2ZP" kind="show" identifier="homeToDetail" id="ugw-em-iok"/>
+                        <segue destination="y01-R8-qDb" kind="presentation" identifier="homeToFavorite" modalPresentationStyle="fullScreen" id="VZC-MZ-MIL"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1031.8840579710145" y="123.88392857142857"/>
+        </scene>
+        <!--Detail View Controller-->
+        <scene sceneID="yhq-Qc-cfj">
+            <objects>
+                <viewController id="Jta-wZ-2ZP" customClass="DetailViewController" customModule="Kitabisa_Proj" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="N0q-Ae-VcZ">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mav-QO-bNv">
+                                <rect key="frame" x="28" y="47" width="359" height="248"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="248" id="g1w-e3-pX9"/>
+                                </constraints>
+                            </imageView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="YVQ-ac-0Wy">
+                                <rect key="frame" x="28" y="316" width="42" height="21"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <viewLayoutGuide key="safeArea" id="nbT-13-PEP"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="mav-QO-bNv" firstAttribute="top" secondItem="nbT-13-PEP" secondAttribute="top" constant="47" id="DCb-oC-KSM"/>
+                            <constraint firstItem="mav-QO-bNv" firstAttribute="leading" secondItem="nbT-13-PEP" secondAttribute="leading" constant="28" id="DDS-bT-8dJ"/>
+                            <constraint firstItem="nbT-13-PEP" firstAttribute="trailing" secondItem="mav-QO-bNv" secondAttribute="trailing" constant="27" id="WKR-4Y-55X"/>
+                            <constraint firstItem="YVQ-ac-0Wy" firstAttribute="leading" secondItem="nbT-13-PEP" secondAttribute="leading" constant="28" id="aOc-Rg-lci"/>
+                            <constraint firstItem="YVQ-ac-0Wy" firstAttribute="top" secondItem="mav-QO-bNv" secondAttribute="bottom" constant="21" id="m7i-EP-1RA"/>
+                        </constraints>
+                    </view>
+                    <navigationItem key="navigationItem" id="xZd-sP-4R4"/>
+                    <connections>
+                        <outlet property="movieImageView" destination="mav-QO-bNv" id="UfC-iq-Nvw"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="PQS-q7-yn0" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="3064" y="124"/>
+        </scene>
+        <!--Favorite View Controller-->
+        <scene sceneID="5vW-d5-6gc">
+            <objects>
+                <viewController id="y01-R8-qDb" customClass="FavoriteViewController" customModule="Kitabisa_Proj" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="9vp-Wk-pnG" customClass="Favo">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <viewLayoutGuide key="safeArea" id="tkg-j8-wUw"/>
+                        <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                    </view>
+                    <connections>
+                        <segue destination="Jta-wZ-2ZP" kind="show" identifier="favoriteToDetail" id="Nlk-ju-Ots"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="Gfg-7V-qfY" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="2054" y="-449"/>
+        </scene>
+        <!--Navigation Controller-->
+        <scene sceneID="mah-6h-85M">
+            <objects>
+                <navigationController automaticallyAdjustsScrollViewInsets="NO" id="bD5-c8-lmU" sceneMemberID="viewController">
+                    <toolbarItems/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="2bK-fg-54d">
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <nil name="viewControllers"/>
+                    <connections>
+                        <segue destination="BYZ-38-t0r" kind="relationship" relationship="rootViewController" id="qTM-ZW-4U7"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="6Ag-20-WNu" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="121.73913043478262" y="123.88392857142857"/>
+        </scene>
+    </scenes>
+    <inferredMetricsTieBreakers>
+        <segue reference="Nlk-ju-Ots"/>
+    </inferredMetricsTieBreakers>
+    <resources>
+        <image name="heart.fill" catalog="system" width="128" height="109"/>
+        <systemColor name="systemBackgroundColor">
+            <color white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+        </systemColor>
+    </resources>
+</document>
