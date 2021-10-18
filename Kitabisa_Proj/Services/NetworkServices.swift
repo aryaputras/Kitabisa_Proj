@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 //Popular
 //Top rated
@@ -14,12 +15,13 @@ import Foundation
 
 //Is favorite: Core Data: Check By ID.
 
-
+///This class handle all network   operation within this app
 class NetworkServices {
     
     ///Token for TMDB API.
     private var token = "a4fc6ff99237c2226086c2a0b90e1f49"
     
+
     
     ///Get list of movies from TMDB API
     func getMoviesData(category: Category, completion: @escaping (Result<Movies, Error>) -> Void) {
@@ -41,10 +43,12 @@ class NetworkServices {
             }
             return ""
         }
-        let trendingMoviesURL = "https://api.themoviedb.org/3/movie/\(categoryString)?api_key=\(token)&language=en-US&page=1"
+        
+        ///Final URL for movie
+        let movieUrl = "https://api.themoviedb.org/3/movie/\(categoryString)?api_key=\(token)&language=en-US&page=1"
         
         
-        guard let url = URL(string: trendingMoviesURL) else {return}
+        guard let url = URL(string: movieUrl) else {return}
         
         // Create URL Session - work on the background
         dataTask = URLSession.shared.dataTask(with: url) { (data, response, error) in
@@ -76,10 +80,7 @@ class NetworkServices {
                 // print(jsonData)
                 completion(.success(jsonData))
                 
-                let url = URL(string: "https://image.tmdb.org/t/p/w500/\(jsonData.results[4].backdrop_path)")
-            //    self.watchImageView.af.setImage(withURL: url!)
-                print(url)
-                // Back to the main thread
+
                 
                 DispatchQueue.main.async {
                     completion(.success(jsonData))
@@ -96,12 +97,12 @@ class NetworkServices {
 
     
     ///Get certain movie reviews from TMDB API
-    func getMovieReviews(movieID: String, completion: @escaping (Result<MovieDetail, Error>) -> Void) {
+    func getMovieReviews(movieID: String, completion: @escaping (Result<MovieReviews, Error>) -> Void) {
         print("getting discovery")
         var dataTask: URLSessionDataTask?
         let movieDetailUrl = "https://api.themoviedb.org/3/movie/\(movieID)/reviews?api_key=\(token)&language=en-US"
         
-        
+        ///Final url for movie reviews
         guard let url = URL(string: movieDetailUrl) else {return}
         
         // Create URL Session - work on the background
@@ -130,7 +131,7 @@ class NetworkServices {
             do {
                 // Parse the data
                 let decoder = JSONDecoder()
-                let jsonData = try decoder.decode(MovieDetail.self, from: data)
+                let jsonData = try decoder.decode(MovieReviews.self, from: data)
                 // print(jsonData)
                 print(data)
                 completion(.success(jsonData))
@@ -209,3 +210,5 @@ class NetworkServices {
     
     
 }
+
+

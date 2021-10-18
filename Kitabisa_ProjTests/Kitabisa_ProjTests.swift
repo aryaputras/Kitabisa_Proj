@@ -9,31 +9,70 @@ import XCTest
 @testable import Kitabisa_Proj
 
 class Kitabisa_ProjTests: XCTestCase {
-
+    let CD = CoreDataServices()
+    let network = NetworkServices()
     
-    override func setUpWithError() throws {
-        // Put setup code here. This method is called before the invocation of each test method in the class.
-    }
 
-    override func tearDownWithError() throws {
-        // Put teardown code here. This method is called after the invocation of each test method in the class.
-    }
-
-    func testCD() {
-        let a = CoreDataServices().isMovieFavorite(movieID: 69420)
+    func test_CD() {
         
-        XCTAssertTrue(a)
+        let isFav = CD.isMovieFavorite(movieID: 292929)
+        XCTAssertFalse(isFav)
     }
-    func testExample() throws {
-        // This is an example of a functional test case.
-        // Use XCTAssert and related functions to verify your tests produce the correct results.
-    }
-
-    func testPerformanceExample() throws {
-        // This is an example of a performance test case.
-        self.measure {
-            // Put the code you want to measure the time of here.
+    func test_get_movies() throws {
+        var mov: [Movie]?
+        network.getMoviesData(category: .nowPlaying) { result in
+            switch result{
+            case .success(let resp):
+                
+                mov = resp.results
+                XCTAssertNotNil(mov)
+            case .failure(let err):
+                print(err)
+            }
         }
+        
+        
     }
+    
+    func test_get_review(){
+        let movieID = 725273
+        var rev: [MovieReview]?
+        network.getMovieReviews(movieID: "\(movieID)") { result in
+            switch result{
+            case .success(let resp):
+                rev = resp.results
+                XCTAssertNotNil(rev)
+            case .failure(let err):
+                print(err)
+                XCTAssertNotNil(err)
+            }
+        }
+        
+        
+        
+        
+    }
+    
+    func test_get_movie_detail(){
+        
+        let movieID = 744275
+        var movDetail: MovieDetail?
+        network.getMovieDetail(movieID: "\(movieID)") { result in
+            switch result{
+            case .success(let resp):
+                movDetail = resp
+                XCTAssertNotNil(movDetail)
+            case .failure(let err):
+                print(err)
+                XCTAssertNotNil(err)
+            }
+        }
+        
+        
+        
+    }
+    
+    
+
 
 }
